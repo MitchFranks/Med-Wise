@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0D7C66">
+  <meta name="description" content="Learn to identify AI-generated and misleading medical information through interactive quizzes and educational content.">
+  <title>MedWise — Spotting Medical Misinformation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="8" fill="currentColor" opacity="0.12"/>
+          <path d="M18 8C12.48 8 8 12.48 8 18s4.48 10 10 10 10-4.48 10-10S23.52 8 18 8zm-1 15l-4-4 1.41-1.41L17 20.17l5.59-5.59L24 16l-7 7z" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">Med<span class="logo-accent">Wise</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="quiz.html" class="nav-link">Quiz</a>
+        <a href="content.html" class="nav-link">Learn</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn btn-ghost btn-sm">Sign In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <div class="hamburger"><span></span><span></span><span></span></div>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="nav-link active">Home</a>
+    <a href="quiz.html" class="nav-link">Quiz</a>
+    <a href="content.html" class="nav-link">Learn</a>
+    <a href="about.html" class="nav-link">About</a>
+    <div class="nav-actions">
+      <a href="signin.html" class="btn btn-secondary">Sign In</a>
+      <a href="register.html" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l2 3h3l-2 3 1 3-3-1-3 2 0-3L4 6h3L8 1z" fill="currentColor"/></svg>
+          Free Educational Platform
+        </div>
+        <h1 class="hero-title">Learn to Spot <span class="highlight">Medical Misinformation</span></h1>
+        <p class="hero-description">Develop critical thinking skills to identify AI-generated and misleading health claims. Protect yourself and your family with evidence-based knowledge.</p>
+        <div class="hero-actions">
+          <a href="quiz.html" class="btn btn-primary btn-lg">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z" fill="currentColor"/></svg>
+            Take the Quiz
+          </a>
+          <a href="content.html" class="btn btn-secondary btn-lg">Explore Content</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-value">10K+</div><div class="hero-stat-label">Quizzes Taken</div></div>
+          <div class="hero-stat"><div class="hero-stat-value">95%</div><div class="hero-stat-label">Found It Helpful</div></div>
+          <div class="hero-stat"><div class="hero-stat-value">50+</div><div class="hero-stat-label">Learning Modules</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-illustration">
+          <svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="2" opacity="0.2"/><circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="2" opacity="0.15"/><path d="M100 60v20m0 40v20m-40-40h20m40 0h20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="25" stroke="currentColor" stroke-width="3" opacity="0.4"/><path d="M90 100l7 7 13-14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="hero-float-card">
+          <div class="float-icon green"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>
+          <div><div class="float-text">Verified Source</div><div class="float-subtext">Peer-reviewed study</div></div>
+        </div>
+        <div class="hero-float-card">
+          <div class="float-icon orange"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg></div>
+          <div><div class="float-text">AI Generated</div><div class="float-subtext">Needs fact-checking</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="howItWorks">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm1 12H7V7h2v5zM8 6a1 1 0 110-2 1 1 0 010 2z"/></svg> How It Works</div>
+        <h2 class="section-title">Your Path to Better Health Literacy</h2>
+        <p class="section-subtitle">Three simple steps to becoming a more informed consumer of medical information.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card fade-in"><div class="step-number">1</div><h3>Take the Quiz</h3><p>Test your ability to distinguish real medical information from AI-generated or misleading claims.</p></div>
+        <div class="step-card fade-in fade-in-delay-1"><div class="step-number">2</div><h3>Learn the Signs</h3><p>Get instant feedback on each answer with explanations of common red flags and verification techniques.</p></div>
+        <div class="step-card fade-in fade-in-delay-2"><div class="step-number">3</div><h3>Build Your Skills</h3><p>Explore in-depth modules, videos, and resources to sharpen your critical thinking about health content.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background-color: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Features</div>
+        <h2 class="section-title">Everything You Need to Stay Informed</h2>
+        <p class="section-subtitle">Tools and resources designed to help you navigate the complex world of online health information.</p>
+      </div>
+      <div class="features-grid">
+        <div class="card fade-in"><div class="card-icon primary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3 class="card-title">Interactive Quizzes</h3><p class="card-text">Practice identifying misleading claims with scenario-based questions and instant feedback.</p></div>
+        <div class="card fade-in fade-in-delay-1"><div class="card-icon accent"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div><h3 class="card-title">Video Lessons</h3><p class="card-text">Watch expert-created content explaining how misinformation spreads and how to verify claims.</p></div>
+        <div class="card fade-in fade-in-delay-2"><div class="card-icon warning"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div><h3 class="card-title">Research Guides</h3><p class="card-text">Access curated articles and step-by-step guides on evaluating medical sources online.</p></div>
+        <div class="card fade-in"><div class="card-icon success"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3 class="card-title">Progress Tracking</h3><p class="card-text">Monitor your learning journey with personalized dashboards and achievement milestones.</p></div>
+        <div class="card fade-in fade-in-delay-1"><div class="card-icon primary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3 class="card-title">Community Driven</h3><p class="card-text">Join thousands of learners committed to promoting accurate health information in their communities.</p></div>
+        <div class="card fade-in fade-in-delay-2"><div class="card-icon accent"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3 class="card-title">Mobile Friendly</h3><p class="card-text">Learn anywhere, anytime. Our platform works seamlessly across all your devices.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Testimonials</div>
+        <h2 class="section-title">What Learners Are Saying</h2>
+        <p class="section-subtitle">Real stories from people who improved their ability to spot medical misinformation.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in"><div class="testimonial-quote">&ldquo;</div><p class="testimonial-text">I used to share health articles without thinking twice. This quiz opened my eyes to how easily misinformation can look credible.</p><div class="testimonial-author"><div class="testimonial-avatar">MR</div><div><div class="testimonial-name">Maria R.</div><div class="testimonial-role">College Student</div></div></div></div>
+        <div class="testimonial-card fade-in fade-in-delay-1"><div class="testimonial-quote">&ldquo;</div><p class="testimonial-text">As a parent, I worry about the health advice I find online. MedWise gave me practical tools to evaluate what I read before acting on it.</p><div class="testimonial-author"><div class="testimonial-avatar">JT</div><div><div class="testimonial-name">James T.</div><div class="testimonial-role">Parent &amp; Educator</div></div></div></div>
+        <div class="testimonial-card fade-in fade-in-delay-2"><div class="testimonial-quote">&ldquo;</div><p class="testimonial-text">The video modules are incredibly well-made. I finally understand how AI can generate convincing but false medical claims.</p><div class="testimonial-author"><div class="testimonial-avatar">SK</div><div><div class="testimonial-name">Sarah K.</div><div class="testimonial-role">Healthcare Worker</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-section">
+        <h2>Ready to Test Your Knowledge?</h2>
+        <p>Take our free quiz and discover how well you can spot medical misinformation. It only takes 5 minutes.</p>
+        <a href="quiz.html" class="btn btn-lg">Start the Quiz Now <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="currentColor" opacity="0.2"/><path d="M16 6C10.48 6 6 10.48 6 16s4.48 10 10 10 10-4.48 10-10S21.52 6 16 6zm-1 15l-4-4 1.41-1.41L15 18.17l5.59-5.59L22 14l-7 7z" fill="currentColor"/></svg> MedWise</a>
+          <p>Empowering people to recognize and resist medical misinformation through education and critical thinking.</p>
+        </div>
+        <div><h4 class="footer-heading">Platform</h4><div class="footer-links"><a href="quiz.html" class="footer-link">Take the Quiz</a><a href="content.html" class="footer-link">Learning Modules</a><a href="content.html" class="footer-link">Video Library</a><a href="account.html" class="footer-link">My Progress</a></div></div>
+        <div><h4 class="footer-heading">Company</h4><div class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="about.html#team" class="footer-link">Our Team</a><a href="#" class="footer-link">Contact</a><a href="#" class="footer-link">Press</a></div></div>
+        <div><h4 class="footer-heading">Legal</h4><div class="footer-links"><a href="#" class="footer-link">Privacy Policy</a><a href="#" class="footer-link">Terms of Use</a><a href="#" class="footer-link">Accessibility</a><a href="#" class="footer-link">Disclaimer</a></div></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 MedWise. All rights reserved. This site is for educational purposes only and does not provide medical advice.</p>
+        <div><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/progress.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

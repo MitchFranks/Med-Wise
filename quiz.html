@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0D7C66">
+  <meta name="description" content="Test your ability to spot medical misinformation with our interactive quiz.">
+  <title>Quiz — MedWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="currentColor" opacity="0.12"/><path d="M18 8C12.48 8 8 12.48 8 18s4.48 10 10 10 10-4.48 10-10S23.52 8 18 8zm-1 15l-4-4 1.41-1.41L17 20.17l5.59-5.59L24 16l-7 7z" fill="currentColor"/></svg>
+        <span class="logo-text">Med<span class="logo-accent">Wise</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="quiz.html" class="nav-link active">Quiz</a>
+        <a href="content.html" class="nav-link">Learn</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn btn-ghost btn-sm">Sign In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu"><div class="hamburger"><span></span><span></span><span></span></div></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="quiz.html" class="nav-link active">Quiz</a>
+    <a href="content.html" class="nav-link">Learn</a>
+    <a href="about.html" class="nav-link">About</a>
+    <div class="nav-actions"><a href="signin.html" class="btn btn-secondary">Sign In</a><a href="register.html" class="btn btn-primary">Get Started</a></div>
+  </div>
+
+  <div class="quiz-page">
+    <div class="quiz-container">
+      <div id="quizIntro" class="quiz-card" style="text-align: center;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--color-primary-light);color:var(--color-primary);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-6);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h2 style="font-size:var(--text-3xl);margin-bottom:var(--space-3);">Can You Spot the Misinformation?</h2>
+        <p style="font-size:var(--text-lg);color:var(--color-text-secondary);margin-bottom:var(--space-4);max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;">You'll be presented with medical claims and information. Your job is to determine whether each one is credible or misleading.</p>
+        <ul style="text-align:left;max-width:360px;margin:0 auto var(--space-8);display:flex;flex-direction:column;gap:var(--space-3);">
+          <li style="display:flex;align-items:center;gap:var(--space-3);color:var(--color-text-secondary);font-size:var(--text-sm);"><svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-primary)"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> 10 questions — takes about 5 minutes</li>
+          <li style="display:flex;align-items:center;gap:var(--space-3);color:var(--color-text-secondary);font-size:var(--text-sm);"><svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-primary)"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Instant feedback after each answer</li>
+          <li style="display:flex;align-items:center;gap:var(--space-3);color:var(--color-text-secondary);font-size:var(--text-sm);"><svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-primary)"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> No medical knowledge required</li>
+        </ul>
+        <button class="btn btn-primary btn-lg" onclick="startQuiz()">Begin Quiz <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button>
+      </div>
+
+      <div id="quizActive" style="display:none;">
+        <div class="quiz-progress">
+          <div class="quiz-progress-header">
+            <span class="quiz-progress-text" id="progressText">Question 1 of 10</span>
+            <span class="quiz-progress-text" id="progressPercent">10%</span>
+          </div>
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill" style="width: 10%"></div></div>
+        </div>
+        <div class="quiz-card" id="questionCard">
+          <div class="quiz-question-label" id="questionLabel"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/></svg> Question 1</div>
+          <h2 class="quiz-question" id="questionText">Loading question...</h2>
+          <div class="quiz-context" id="questionContext">Loading context...</div>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quiz-feedback" id="quizFeedback">
+            <svg class="quiz-feedback-icon" viewBox="0 0 24 24" fill="currentColor" id="feedbackIcon"></svg>
+            <div><h4 id="feedbackTitle">Feedback title</h4><p id="feedbackText">Feedback explanation...</p></div>
+          </div>
+          <div class="quiz-actions">
+            <button class="btn btn-ghost" id="prevBtn" onclick="prevQuestion()" style="visibility:hidden;"><svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg> Previous</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next Question <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div id="quizResults" style="display:none;">
+        <div class="quiz-card quiz-results">
+          <div class="quiz-results-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <h2>Quiz Complete!</h2>
+          <p id="resultsMessage">Great job! Here's how you did.</p>
+          <div class="quiz-score" id="quizScore"><svg width="22" height="22" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg> <span id="scoreText">8 / 10</span></div>
+          <div id="resultsBreakdown" style="text-align:left;margin-bottom:var(--space-8);"></div>
+          <div class="quiz-results-actions">
+            <button class="btn btn-primary btn-lg" onclick="restartQuiz()"><svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Try Again</button>
+            <a href="content.html" class="btn btn-secondary btn-lg">Explore Content</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <p>&copy; 2026 MedWise. All rights reserved. Educational purposes only.</p>
+        <div><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/progress.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>

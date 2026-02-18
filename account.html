@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0D7C66">
+  <title>My Progress — MedWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="currentColor" opacity="0.12"/><path d="M18 8C12.48 8 8 12.48 8 18s4.48 10 10 10 10-4.48 10-10S23.52 8 18 8zm-1 15l-4-4 1.41-1.41L17 20.17l5.59-5.59L24 16l-7 7z" fill="currentColor"/></svg>
+        <span class="logo-text">Med<span class="logo-accent">Wise</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="quiz.html" class="nav-link">Quiz</a>
+        <a href="content.html" class="nav-link">Learn</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="account.html" class="btn btn-ghost btn-sm" style="color:var(--color-primary);">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+          My Progress
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu"><div class="hamburger"><span></span><span></span><span></span></div></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="quiz.html" class="nav-link">Quiz</a>
+    <a href="content.html" class="nav-link">Learn</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="account.html" class="nav-link active">My Progress</a>
+    <div class="nav-actions">
+      <button class="btn btn-secondary" onclick="handleSignOut()">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- Not Signed In State -->
+  <div class="auth-page" id="signedOutState" style="display:none;">
+    <div class="auth-container">
+      <div class="auth-card" style="text-align:center;">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--color-primary-light);color:var(--color-primary);display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-6);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        </div>
+        <h1 style="font-size:var(--text-2xl);margin-bottom:var(--space-2);">Sign In to Track Your Progress</h1>
+        <p style="color:var(--color-text-secondary);margin-bottom:var(--space-8);line-height:1.7;">Create a free account to save your quiz scores, track content you've explored, and earn milestones along the way.</p>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);">
+          <a href="signin.html" class="btn btn-primary btn-lg" style="width:100%;">Sign In</a>
+          <a href="register.html" class="btn btn-secondary btn-lg" style="width:100%;">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signed In Dashboard -->
+  <div class="account-page" id="signedInState" style="display:none;">
+    <div class="container">
+
+      <!-- Profile Header -->
+      <div class="account-header fade-in">
+        <div class="account-avatar" id="userAvatar">JD</div>
+        <div class="account-info">
+          <h1 id="userName">Jane Doe</h1>
+          <p id="userMeta">Member &middot; <span id="userEmail"></span></p>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:var(--space-3);flex-wrap:wrap;">
+          <button class="btn btn-ghost btn-sm" onclick="handleSignOut()">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H3zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Overview -->
+      <div class="account-stats" id="statsGrid">
+        <div class="stat-card fade-in"><div class="stat-card-value" id="statQuizzes">0</div><div class="stat-card-label">Quizzes Taken</div></div>
+        <div class="stat-card fade-in"><div class="stat-card-value" id="statAvgScore">–</div><div class="stat-card-label">Average Score</div></div>
+        <div class="stat-card fade-in"><div class="stat-card-value" id="statContent">0</div><div class="stat-card-label">Content Viewed</div></div>
+        <div class="stat-card fade-in"><div class="stat-card-value" id="statStreak">0</div><div class="stat-card-label">Day Streak</div></div>
+      </div>
+
+      <!-- Overall Progress Bar -->
+      <div class="progress-section fade-in" style="margin-bottom:var(--space-6);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);">
+          <h2 style="margin-bottom:0;font-size:var(--text-lg);">Overall Progress</h2>
+          <span style="font-weight:700;color:var(--color-primary);" id="overallPercent">0%</span>
+        </div>
+        <div class="quiz-progress-bar" style="height:12px;">
+          <div class="quiz-progress-fill" id="overallBar" style="width:0%;"></div>
+        </div>
+      </div>
+
+      <!-- Tab Navigation -->
+      <div class="dashboard-tabs" id="dashboardTabs">
+        <button class="tab-btn active" data-tab="quizzes" onclick="switchTab('quizzes', this)">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/></svg>
+          Quizzes
+        </button>
+        <button class="tab-btn" data-tab="content" onclick="switchTab('content', this)">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg>
+          Content
+        </button>
+        <button class="tab-btn" data-tab="milestones" onclick="switchTab('milestones', this)">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          Milestones
+        </button>
+      </div>
+
+      <!-- Tab: Quizzes -->
+      <div class="tab-panel active" id="panel-quizzes">
+        <div class="progress-section">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);">
+            <h2 style="margin-bottom:0;">Quiz History</h2>
+            <a href="quiz.html" class="btn btn-primary btn-sm">Take a Quiz</a>
+          </div>
+          <div id="quizHistoryList">
+            <div class="empty-state" id="quizEmptyState">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <h4>No quizzes taken yet</h4>
+              <p>Test your knowledge and see how well you can spot medical misinformation.</p>
+              <a href="quiz.html" class="btn btn-primary">Take Your First Quiz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Content -->
+      <div class="tab-panel" id="panel-content">
+        <!-- Content sub-sections -->
+        <div class="progress-section" id="videosSection">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-primary)" style="vertical-align:-3px;margin-right:6px;"><polygon points="16 7 16 17 16 7"/><rect x="2" y="4" width="12" height="12" rx="2"/><path d="M14.5 9.5l3.5-2v5l-3.5-2"/></svg>
+            Videos <span class="section-count" id="videoCount">0 / 4</span>
+          </h2>
+          <div id="videoList"></div>
+        </div>
+        <div class="progress-section" id="articlesSection">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-accent)" style="vertical-align:-3px;margin-right:6px;"><path d="M14 2H6a2 2 0 00-2 2v16l8-3 8 3V4a2 2 0 00-2-2z"/></svg>
+            Articles <span class="section-count" id="articleCount">0 / 2</span>
+          </h2>
+          <div id="articleList"></div>
+        </div>
+        <div class="progress-section" id="guidesSection">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-warning)" style="vertical-align:-3px;margin-right:6px;"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V2H6.5A2.5 2.5 0 014 4.5v15z"/></svg>
+            Guides <span class="section-count" id="guideCount">0 / 2</span>
+          </h2>
+          <div id="guideList"></div>
+        </div>
+        <div class="progress-section" id="infographicSection">
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-success)" style="vertical-align:-3px;margin-right:6px;"><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M17 13l-4-4-6 8"/></svg>
+            Infographics <span class="section-count" id="infographicCount">0 / 1</span>
+          </h2>
+          <div id="infographicList"></div>
+        </div>
+      </div>
+
+      <!-- Tab: Milestones -->
+      <div class="tab-panel" id="panel-milestones">
+        <div class="progress-section">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-6);">
+            <h2 style="margin-bottom:0;">Milestones</h2>
+            <span class="section-count" id="milestoneCount" style="font-size:var(--text-base);">0 / 12 earned</span>
+          </div>
+          <div class="milestone-grid" id="milestoneGrid"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <p>&copy; 2026 MedWise. All rights reserved. Educational purposes only.</p>
+        <div><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/progress.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const CHECK_SVG = '<svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>';
+    const CLOCK_SVG = '<svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (MedWiseProgress.isLoggedIn()) {
+        MedWiseProgress.trackStreak();
+        showDashboard();
+      } else {
+        document.getElementById('signedOutState').style.display = '';
+        document.getElementById('signedInState').style.display = 'none';
+      }
+    });
+
+    function showDashboard() {
+      document.getElementById('signedOutState').style.display = 'none';
+      document.getElementById('signedInState').style.display = '';
+
+      // User info
+      document.getElementById('userAvatar').textContent = MedWiseProgress.getUserInitials();
+      document.getElementById('userName').textContent = MedWiseProgress.getUserName();
+      document.getElementById('userEmail').textContent = MedWiseProgress.getUserEmail();
+
+      // Stats
+      const qs = MedWiseProgress.getQuizStats();
+      const cs = MedWiseProgress.getContentStats();
+      const streak = MedWiseProgress.getStreakCount();
+      document.getElementById('statQuizzes').textContent = qs.count;
+      document.getElementById('statAvgScore').textContent = qs.count ? qs.avgScore + '%' : '–';
+      document.getElementById('statContent').textContent = cs.totalViewed;
+      document.getElementById('statStreak').textContent = streak;
+
+      // Overall progress
+      const overall = MedWiseProgress.getOverallProgress();
+      document.getElementById('overallPercent').textContent = overall + '%';
+      document.getElementById('overallBar').style.width = overall + '%';
+
+      renderQuizHistory();
+      renderContentTracking();
+      renderMilestones();
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + tabId).classList.add('active');
+    }
+
+    function renderQuizHistory() {
+      const history = MedWiseProgress.getQuizHistory();
+      const container = document.getElementById('quizHistoryList');
+      const emptyState = document.getElementById('quizEmptyState');
+
+      if (!history.length) {
+        emptyState.style.display = '';
+        return;
+      }
+      emptyState.style.display = 'none';
+
+      container.innerHTML = history.map((q, i) => {
+        const date = new Date(q.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const pct = q.percentage;
+        const color = pct >= 80 ? 'var(--color-success)' : pct >= 60 ? 'var(--color-warning)' : 'var(--color-error)';
+        return `
+          <div class="progress-item">
+            <div class="progress-item-icon completed" style="background:${pct >= 80 ? 'var(--color-success-light)' : pct >= 60 ? 'var(--color-warning-light)' : 'var(--color-error-light)'};color:${color};">
+              ${pct >= 80 ? CHECK_SVG : CLOCK_SVG}
+            </div>
+            <div class="progress-item-content">
+              <h4>Quiz #${history.length - i}</h4>
+              <p>${date} &middot; Score: ${q.score}/${q.total}</p>
+            </div>
+            <div class="progress-item-bar">
+              <div class="progress-mini-bar"><div class="progress-mini-fill" style="width:${pct}%;background:${color};"></div></div>
+              <div class="progress-mini-text">${pct}%</div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function renderContentTracking() {
+      const library = MedWiseProgress.getContentLibrary();
+      const cs = MedWiseProgress.getContentStats();
+
+      document.getElementById('videoCount').textContent = `${cs.videosWatched} / ${cs.videosTotal}`;
+      document.getElementById('articleCount').textContent = `${cs.articlesRead} / ${cs.articlesTotal}`;
+      document.getElementById('guideCount').textContent = `${cs.guidesCompleted} / ${cs.guidesTotal}`;
+      document.getElementById('infographicCount').textContent = `${cs.infographicsViewed} / ${cs.infographicsTotal}`;
+
+      renderContentGroup('videoList', library.filter(c => c.type === 'video'));
+      renderContentGroup('articleList', library.filter(c => c.type === 'article'));
+      renderContentGroup('guideList', library.filter(c => c.type === 'guide'));
+      renderContentGroup('infographicList', library.filter(c => c.type === 'infographic'));
+    }
+
+    function renderContentGroup(containerId, items) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = items.map(item => {
+        const statusClass = item.completed ? 'completed' : 'locked';
+        const statusIcon = item.completed ? CHECK_SVG : '<svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+        const statusText = item.completed ? 'Completed' : 'Not yet viewed';
+        const viewedDate = item.viewedAt ? new Date(item.viewedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '';
+        return `
+          <div class="progress-item">
+            <div class="progress-item-icon ${statusClass}">${statusIcon}</div>
+            <div class="progress-item-content">
+              <h4>${item.title}</h4>
+              <p>${item.duration}${viewedDate ? ' &middot; Viewed ' + viewedDate : ''}</p>
+            </div>
+            <div style="flex-shrink:0;">
+              ${item.completed
+                ? '<span class="completion-badge earned">Completed</span>'
+                : '<a href="content.html" class="btn btn-sm btn-secondary">View</a>'}
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function renderMilestones() {
+      const milestones = MedWiseProgress.getMilestones();
+      const ms = MedWiseProgress.getMilestoneStats();
+      document.getElementById('milestoneCount').textContent = `${ms.earned} / ${ms.total} earned`;
+
+      const ICONS = {
+        star: '<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>',
+        trophy: '<path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm2 0a1 1 0 10-1-1v1h1zm-6 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm2 3a1 1 0 000 2h4a1 1 0 100-2H7z"/>',
+        fire: '<path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"/>',
+        crown: '<path fill-rule="evenodd" d="M2 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm2 0h12v2H4V6zm0 4h12v4H4v-4z"/>',
+        play: '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>',
+        video: '<path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm12.553 1.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>',
+        book: '<path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>',
+        books: '<path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>',
+        compass: '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>',
+        explore: '<path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>',
+        calendar: '<path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>',
+        flame: '<path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"/>'
+      };
+
+      document.getElementById('milestoneGrid').innerHTML = milestones.map(m => `
+        <div class="milestone-card ${m.earned ? 'earned' : 'locked'}">
+          <div class="milestone-icon ${m.earned ? 'earned' : ''}">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="24" height="24">${ICONS[m.icon] || ICONS.star}</svg>
+          </div>
+          <div class="milestone-label">${m.label}</div>
+          <div class="milestone-desc">${m.desc}</div>
+          ${m.earned ? '<div class="milestone-badge">Earned</div>' : ''}
+        </div>
+      `).join('');
+    }
+
+    function handleSignOut() {
+      MedWiseProgress.logout();
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0D7C66">
+  <title>About — MedWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="currentColor" opacity="0.12"/><path d="M18 8C12.48 8 8 12.48 8 18s4.48 10 10 10 10-4.48 10-10S23.52 8 18 8zm-1 15l-4-4 1.41-1.41L17 20.17l5.59-5.59L24 16l-7 7z" fill="currentColor"/></svg>
+        <span class="logo-text">Med<span class="logo-accent">Wise</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="quiz.html" class="nav-link">Quiz</a>
+        <a href="content.html" class="nav-link">Learn</a>
+        <a href="about.html" class="nav-link active">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn btn-ghost btn-sm">Sign In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu"><div class="hamburger"><span></span><span></span><span></span></div></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="quiz.html" class="nav-link">Quiz</a>
+    <a href="content.html" class="nav-link">Learn</a>
+    <a href="about.html" class="nav-link active">About</a>
+    <div class="nav-actions"><a href="signin.html" class="btn btn-secondary">Sign In</a><a href="register.html" class="btn btn-primary">Get Started</a></div>
+  </div>
+
+  <section class="about-hero">
+    <div class="container">
+      <div class="section-badge">About MedWise</div>
+      <h1>Fighting Misinformation Through Education</h1>
+      <p>We believe everyone deserves the skills to tell fact from fiction when it comes to their health. MedWise is a free educational platform dedicated to building health literacy for all.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-mission">
+        <div class="about-mission-image">
+          <svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="2" opacity="0.2"/><circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="2" opacity="0.15"/><path d="M100 60v20m0 40v20m-40-40h20m40 0h20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="100" cy="100" r="25" stroke="currentColor" stroke-width="3" opacity="0.4"/><path d="M90 100l7 7 13-14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="about-mission-content">
+          <div class="section-badge">Our Mission</div>
+          <h2>Empowering Critical Thinking About Health</h2>
+          <p>In an era of AI-generated content and viral social media posts, medical misinformation has become one of the most pressing public health challenges of our time. False claims about treatments, vaccines, and diagnoses spread faster than ever before.</p>
+          <p>MedWise was created to address this challenge head-on. Our platform combines interactive quizzes, expert-curated content, and research-backed teaching methods to help people of all backgrounds develop the skills they need to evaluate health information critically.</p>
+          <p>We don't tell you what to think — we teach you how to think. By understanding the tactics used to create and spread misinformation, you become empowered to protect yourself, your family, and your community from harmful false claims.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background-color: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Our Values</div>
+        <h2 class="section-title">What We Stand For</h2>
+        <p class="section-subtitle">The principles that guide everything we build and teach.</p>
+      </div>
+      <div class="about-values">
+        <div class="value-card">
+          <div class="card-icon primary">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Trust &amp; Accuracy</h3>
+          <p>Every piece of content is reviewed by medical professionals and backed by peer-reviewed research.</p>
+        </div>
+        <div class="value-card">
+          <div class="card-icon accent">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Accessibility</h3>
+          <p>Health literacy is a right, not a privilege. Our platform is free and designed for learners of all backgrounds.</p>
+        </div>
+        <div class="value-card">
+          <div class="card-icon warning">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
+          <h3>Empowerment</h3>
+          <p>We give you the tools and frameworks to evaluate information on your own, fostering lifelong critical thinking.</p>
+        </div>
+        <div class="value-card">
+          <div class="card-icon success">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Impact</h3>
+          <p>We measure our success by real-world outcomes — fewer people sharing false claims and more informed health decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Our Team</div>
+        <h2 class="section-title">Meet the People Behind MedWise</h2>
+        <p class="section-subtitle">A passionate team of medical professionals, educators, and technologists working together to fight misinformation.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">DR</div>
+          <h3>Dr. Rachel Foster</h3>
+          <p>Medical Director</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">AM</div>
+          <h3>Alex Martinez</h3>
+          <p>Lead Developer</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">PT</div>
+          <h3>Priya Thakur</h3>
+          <p>UX Research</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">JW</div>
+          <h3>James Wilson</h3>
+          <p>Education</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-section">
+        <h2>Join the Fight Against Misinformation</h2>
+        <p>Create a free account and start building the skills you need to navigate health information with confidence.</p>
+        <a href="register.html" class="btn btn-lg">Get Started Free <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo"><svg viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="currentColor" opacity="0.2"/><path d="M16 6C10.48 6 6 10.48 6 16s4.48 10 10 10 10-4.48 10-10S21.52 6 16 6zm-1 15l-4-4 1.41-1.41L15 18.17l5.59-5.59L22 14l-7 7z" fill="currentColor"/></svg> MedWise</a>
+          <p>Empowering people to recognize and resist medical misinformation through education and critical thinking.</p>
+        </div>
+        <div><h4 class="footer-heading">Platform</h4><div class="footer-links"><a href="quiz.html" class="footer-link">Take the Quiz</a><a href="content.html" class="footer-link">Learning Modules</a><a href="content.html" class="footer-link">Video Library</a><a href="account.html" class="footer-link">My Progress</a></div></div>
+        <div><h4 class="footer-heading">Company</h4><div class="footer-links"><a href="about.html" class="footer-link">About Us</a><a href="about.html#team" class="footer-link">Our Team</a><a href="#" class="footer-link">Contact</a><a href="#" class="footer-link">Press</a></div></div>
+        <div><h4 class="footer-heading">Legal</h4><div class="footer-links"><a href="#" class="footer-link">Privacy Policy</a><a href="#" class="footer-link">Terms of Use</a><a href="#" class="footer-link">Accessibility</a><a href="#" class="footer-link">Disclaimer</a></div></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 MedWise. All rights reserved. This site is for educational purposes only and does not provide medical advice.</p>
+        <div><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/progress.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

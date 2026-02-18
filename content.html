@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0D7C66">
+  <title>Learn — MedWise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="currentColor" opacity="0.12"/><path d="M18 8C12.48 8 8 12.48 8 18s4.48 10 10 10 10-4.48 10-10S23.52 8 18 8zm-1 15l-4-4 1.41-1.41L17 20.17l5.59-5.59L24 16l-7 7z" fill="currentColor"/></svg>
+        <span class="logo-text">Med<span class="logo-accent">Wise</span></span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="quiz.html" class="nav-link">Quiz</a>
+        <a href="content.html" class="nav-link active">Learn</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="signin.html" class="btn btn-ghost btn-sm">Sign In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu"><div class="hamburger"><span></span><span></span><span></span></div></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="quiz.html" class="nav-link">Quiz</a>
+    <a href="content.html" class="nav-link active">Learn</a>
+    <a href="about.html" class="nav-link">About</a>
+    <div class="nav-actions"><a href="signin.html" class="btn btn-secondary">Sign In</a><a href="register.html" class="btn btn-primary">Get Started</a></div>
+  </div>
+
+  <div class="content-page">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Learning Library</div>
+        <h2 class="section-title">Educational Content</h2>
+        <p class="section-subtitle">Explore videos, articles, and guides to sharpen your ability to spot medical misinformation.</p>
+      </div>
+
+      <div class="content-filter">
+        <button class="filter-btn active" onclick="filterContent('all', this)">All</button>
+        <button class="filter-btn" onclick="filterContent('video', this)">Videos</button>
+        <button class="filter-btn" onclick="filterContent('article', this)">Articles</button>
+        <button class="filter-btn" onclick="filterContent('guide', this)">Guides</button>
+        <button class="filter-btn" onclick="filterContent('infographic', this)">Infographics</button>
+      </div>
+
+      <div class="content-grid" id="contentGrid"></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-section">
+        <h2>Put Your Knowledge to the Test</h2>
+        <p>Think you can spot medical misinformation? Take our interactive quiz and find out how sharp your skills really are.</p>
+        <a href="quiz.html" class="btn btn-lg">Take the Quiz <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <p>&copy; 2026 MedWise. All rights reserved. Educational purposes only.</p>
+        <div><a href="#">Privacy</a> &middot; <a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/progress.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const CONTENT_CARDS = [
+      { id: 'vid-ai-fake', type: 'video', title: 'How AI Generates Fake Medical Articles', desc: 'Discover the techniques AI uses to create convincing but false medical content and how to recognize it.', duration: '8:24' },
+      { id: 'art-red-flags', type: 'article', title: '5 Red Flags in Online Health Advice', desc: 'Learn the most common warning signs that a health article or social media post may be misleading.', duration: '7 min read' },
+      { id: 'vid-checking-sources', type: 'video', title: 'Checking Sources: A Beginner\'s Guide', desc: 'A step-by-step walkthrough on how to verify the credibility of medical information you find online.', duration: '12:05' },
+      { id: 'guide-sift', type: 'guide', title: 'The SIFT Method for Evaluating Claims', desc: 'Master the Stop, Investigate, Find, Trace method used by fact-checkers around the world.', duration: '10 min read' },
+      { id: 'info-anatomy', type: 'infographic', title: 'Anatomy of a Misleading Health Post', desc: 'A visual breakdown of the elements that make health misinformation look credible at first glance.', duration: '3 min read' },
+      { id: 'vid-psychology', type: 'video', title: 'Why We Fall for Health Misinformation', desc: 'Explore the psychological biases and emotional triggers that make us vulnerable to false health claims.', duration: '15:30' },
+      { id: 'art-trusted-sources', type: 'article', title: 'Trusted vs. Untrusted Medical Sources', desc: 'Learn how to distinguish between reliable medical databases and questionable health websites.', duration: '8 min read' },
+      { id: 'guide-family', type: 'guide', title: 'How to Talk to Family About Health Myths', desc: 'Practical strategies for having productive conversations with loved ones who believe health misinformation.', duration: '6 min read' },
+      { id: 'vid-clinical-trials', type: 'video', title: 'Understanding Clinical Trial Results', desc: 'Learn how to read and interpret clinical trial findings so you can evaluate medical claims with confidence.', duration: '6:45' }
+    ];
+
+    function renderCards(filter) {
+      const grid = document.getElementById('contentGrid');
+      const loggedIn = MedWiseProgress.isLoggedIn();
+      const cards = filter === 'all' ? CONTENT_CARDS : CONTENT_CARDS.filter(c => c.type === filter);
+
+      grid.innerHTML = cards.map(card => {
+        const viewed = MedWiseProgress.isContentViewed(card.id);
+        const isVideo = card.type === 'video';
+        const thumbnailSvg = {
+          video: `<div class="content-card-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span class="content-card-duration">${card.duration}</span>`,
+          article: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+          guide: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>`,
+          infographic: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`
+        };
+
+        const btnHtml = loggedIn
+          ? (viewed
+            ? `<button class="btn btn-sm mark-done-btn done" onclick="toggleContentDone('${card.id}')" title="Mark as not done"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Completed</button>`
+            : `<button class="btn btn-sm mark-done-btn" onclick="toggleContentDone('${card.id}')"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="8"/></svg> Mark as Done</button>`
+          )
+          : '';
+
+        return `
+          <div class="content-card ${viewed ? 'card-completed' : ''}" data-type="${card.type}" data-id="${card.id}">
+            ${viewed ? '<div class="card-done-ribbon"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div>' : ''}
+            <div class="content-card-thumbnail">${thumbnailSvg[card.type]}</div>
+            <div class="content-card-body">
+              <h3>${card.title}</h3>
+              <p>${card.desc}</p>
+              <div class="content-card-meta">
+                <span class="content-card-tag">${card.type.charAt(0).toUpperCase() + card.type.slice(1)}</span>
+                <span>${card.duration}</span>
+              </div>
+              ${btnHtml}
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    let currentFilter = 'all';
+    function filterContent(type, btn) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderCards(type);
+    }
+
+    const API_BASE = 'http://localhost:3000/api';
+
+    async function toggleContentDone(contentId) {
+      if (!MedWiseProgress.isLoggedIn()) return;
+
+      const btn = document.querySelector(`[data-id="${contentId}"] .mark-done-btn`);
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Saving...';
+      }
+
+      // Get the DB user id (stored at login); default to 1 for demo
+      const userId = localStorage.getItem('medwise_user_db_id') || 1;
+
+      try {
+        const res = await fetch(`${API_BASE}/content/complete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: Number(userId), contentId })
+        });
+
+        if (!res.ok) throw new Error('Server returned ' + res.status);
+
+        const data = await res.json();
+        console.log('DB updated:', data.progress);
+
+        // Also update localStorage so the rest of the app stays in sync
+        MedWiseProgress.markContentViewed(contentId);
+        renderCards(currentFilter);
+      } catch (err) {
+        console.warn('Backend unavailable, falling back to localStorage:', err.message);
+        MedWiseProgress.markContentViewed(contentId);
+        renderCards(currentFilter);
+      }
+    }
+
+    async function loadProgressFromDB() {
+      if (!MedWiseProgress.isLoggedIn()) return;
+      const userId = localStorage.getItem('medwise_user_db_id') || 1;
+      try {
+        const res = await fetch(`${API_BASE}/content/progress/${userId}`);
+        if (!res.ok) return;
+        const rows = await res.json();
+        rows.forEach(row => {
+          if (row.completed) MedWiseProgress.markContentViewed(row.content_id);
+        });
+      } catch {
+        // Backend not running — that's fine, use localStorage only
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadProgressFromDB();
+      renderCards('all');
+    });
+  </script>
+</body>
+</html>
