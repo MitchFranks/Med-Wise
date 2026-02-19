@@ -62,4 +62,29 @@ router.post('/complete', async (req, res) => {
   }
 });
 
+// POST /api/content/uncomplete — unmark a content item
+// Body: { userId: number, contentId: string }
+router.post('/uncomplete', async (req, res) => {
+  try {
+    const { userId, contentId } = req.body;
+
+    if (!userId || !contentId) {
+      return res.status(400).json({ error: 'userId and contentId are required' });
+    }
+
+    await pool.query(
+      'DELETE FROM user_content_progress WHERE user_id = $1 AND content_id = $2',
+      [userId, contentId]
+    );
+
+    res.json({
+      message: 'Content unmarked',
+      contentId
+    });
+  } catch (err) {
+    console.error('POST /api/content/uncomplete error:', err.message);
+    res.status(500).json({ error: 'Failed to update progress' });
+  }
+});
+
 module.exports = router;

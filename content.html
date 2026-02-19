@@ -111,7 +111,7 @@
 
         const btnHtml = loggedIn
           ? (viewed
-            ? `<button class="btn btn-sm mark-done-btn done" onclick="toggleContentDone('${card.id}')" title="Mark as not done"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Completed</button>`
+            ? `<button class="btn btn-sm mark-done-btn done" onclick="toggleContentDone('${card.id}')" title="Click to undo"><svg class="done-check" width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="done-label">Completed</span><span class="undo-label">Undo</span></button>`
             : `<button class="btn btn-sm mark-done-btn" onclick="toggleContentDone('${card.id}')"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="8"/></svg> Mark as Done</button>`
           )
           : '';
@@ -146,17 +146,18 @@
     async function toggleContentDone(contentId) {
       if (!MedWiseProgress.isLoggedIn()) return;
 
+      const alreadyDone = MedWiseProgress.isContentViewed(contentId);
       const btn = document.querySelector(`[data-id="${contentId}"] .mark-done-btn`);
       if (btn) {
         btn.disabled = true;
-        btn.textContent = 'Saving...';
+        btn.textContent = alreadyDone ? 'Removing...' : 'Saving...';
       }
 
-      // Get the DB user id (stored at login); default to 1 for demo
       const userId = localStorage.getItem('medwise_user_db_id') || 1;
+      const endpoint = alreadyDone ? 'uncomplete' : 'complete';
 
       try {
-        const res = await fetch(`${API_BASE}/content/complete`, {
+        const res = await fetch(`${API_BASE}/content/${endpoint}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId: Number(userId), contentId })
@@ -164,15 +165,19 @@
 
         if (!res.ok) throw new Error('Server returned ' + res.status);
 
-        const data = await res.json();
-        console.log('DB updated:', data.progress);
-
-        // Also update localStorage so the rest of the app stays in sync
-        MedWiseProgress.markContentViewed(contentId);
+        if (alreadyDone) {
+          MedWiseProgress.unmarkContentViewed(contentId);
+        } else {
+          MedWiseProgress.markContentViewed(contentId);
+        }
         renderCards(currentFilter);
       } catch (err) {
         console.warn('Backend unavailable, falling back to localStorage:', err.message);
-        MedWiseProgress.markContentViewed(contentId);
+        if (alreadyDone) {
+          MedWiseProgress.unmarkContentViewed(contentId);
+        } else {
+          MedWiseProgress.markContentViewed(contentId);
+        }
         renderCards(currentFilter);
       }
     }

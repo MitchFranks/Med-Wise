@@ -5,8 +5,13 @@
  */
 
 const MedWiseProgress = (() => {
-  const STORAGE_KEY = 'medwise_progress';
+  const STORAGE_KEY_PREFIX = 'medwise_progress_';
   const AUTH_KEY = 'medwise_auth';
+
+  function getStorageKey() {
+    const userId = localStorage.getItem('medwise_user_db_id') || localStorage.getItem('medwise_user_email') || 'guest';
+    return STORAGE_KEY_PREFIX + userId;
+  }
 
   const DEFAULT_DATA = {
     quizzes: [],
@@ -58,7 +63,8 @@ const MedWiseProgress = (() => {
 
   function load() {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const key = getStorageKey();
+      const raw = localStorage.getItem(key);
       if (!raw) return { ...DEFAULT_DATA, content: {}, milestones: { ...DEFAULT_DATA.milestones } };
       const data = JSON.parse(raw);
       return {
@@ -72,7 +78,7 @@ const MedWiseProgress = (() => {
   }
 
   function save(data) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(getStorageKey(), JSON.stringify(data));
   }
 
   function isLoggedIn() {
@@ -83,11 +89,16 @@ const MedWiseProgress = (() => {
     localStorage.setItem(AUTH_KEY, 'true');
     localStorage.setItem('medwise_user_name', name || 'User');
     localStorage.setItem('medwise_user_email', email || '');
+    // Clean up old shared progress key from before per-user storage
+    localStorage.removeItem('medwise_progress');
     trackStreak();
   }
 
   function logout() {
     localStorage.removeItem(AUTH_KEY);
+    localStorage.removeItem('medwise_user_name');
+    localStorage.removeItem('medwise_user_email');
+    localStorage.removeItem('medwise_user_db_id');
   }
 
   function getUserName() {
@@ -177,6 +188,12 @@ const MedWiseProgress = (() => {
     save(data);
   }
 
+  function unmarkContentViewed(contentId) {
+    const data = load();
+    delete data.content[contentId];
+    save(data);
+  }
+
   function isContentViewed(contentId) {
     const data = load();
     return !!data.content[contentId];
@@ -262,14 +279,14 @@ const MedWiseProgress = (() => {
   }
 
   function resetAll() {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(getStorageKey());
   }
 
   return {
     isLoggedIn, login, logout, getUserName, getUserEmail, getUserInitials,
     trackStreak, getStreakCount,
     saveQuizResult, getQuizHistory, getQuizStats,
-    markContentViewed, isContentViewed, getContentStats, getContentLibrary,
+    markContentViewed, unmarkContentViewed, isContentViewed, getContentStats, getContentLibrary,
     getMilestones, getMilestoneStats, getOverallProgress,
     CONTENT_LIBRARY, resetAll
   };
